@@ -5,7 +5,7 @@
 - name: Install nmon
   package:
     name: nmon
-  when: ansible_distribution != 'RedHat' or ansible_distribution_major_version != '7'
+  when: ansible_os_family != 'RedHat' or ansible_distribution_major_version != '7'
 - block:
     - copy: src=check_systemd_status.sh dest=/usr/local/bin/check_systemd_status mode=755
     - template: src=systemd-check-cron.j2 dest=/etc/cron.d/systemd-check-cron mode=644
